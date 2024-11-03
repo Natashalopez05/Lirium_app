@@ -7,7 +7,6 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-
 class _HomeState extends State<Home> {
   final List<String> _notes = []; // Lista de notas
   final List<bool> _checked = []; // Lista de verificación
@@ -57,7 +56,6 @@ class _HomeState extends State<Home> {
                   Navigator.pop(context);
                 },
               ),
-             
             ],
           ),
         );
@@ -79,7 +77,7 @@ class _HomeState extends State<Home> {
             Text(
               'Lirium',
               style: TextStyle(
-                color: Colors.black,
+                color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
@@ -100,7 +98,7 @@ class _HomeState extends State<Home> {
             gradient: LinearGradient(
               colors: [
                 Color(0xFFE57373), // Rojo Rubor
-                Color(0xFFFFF1E6), // Beige Claro
+                Color.fromARGB(255, 153, 0, 0), // Beige Claro
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -122,50 +120,18 @@ class _HomeState extends State<Home> {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width * 0.90, // Ancho del cuadro de título
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 255, 255, 255), // Beige Claro
-                          borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 6,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        margin: const EdgeInsets.only(top: 50, bottom: 20),
-                        padding: const EdgeInsets.all(20.0), // Espaciado interno
-                        child: Column(
+                        
+                        margin: const EdgeInsets.only(top: 10, bottom: 0),
+                        padding: const EdgeInsets.all(10.0), // Espaciado interno
+                        child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'All ToDos',
                               style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1), // Color del texto
+                                color: Color.fromRGBO(90, 0, 0, 1), // Color del texto
                                 fontSize: 25, // Tamaño de la fuente
                                 fontWeight: FontWeight.bold, // Peso de la fuente
-                              ),
-                            ),
-                            const SizedBox(height: 10), // Espaciado entre el texto y el campo de búsqueda
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    blurRadius: 6,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Search...',
-                                  border: InputBorder.none,
-                                  suffixIcon: Icon(Icons.search, color: Color.fromARGB(255, 97, 1, 1), size: 30),
-                                ),
                               ),
                             ),
                           ],
@@ -174,7 +140,7 @@ class _HomeState extends State<Home> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.90, // Ancho del cuadro de notas
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: const Color.fromARGB(144, 153, 0, 0),
                           borderRadius: BorderRadius.circular(20.0),
                           boxShadow: [
                             BoxShadow(
@@ -189,9 +155,9 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Notas',
+                              'Notes',
                               style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1), // Color del texto
+                                color: Color.fromRGBO(255, 255, 255, 1), // Color del texto
                                 fontSize: 20, // Tamaño de la fuente
                                 fontWeight: FontWeight.bold, // Peso de la fuente
                               ),
@@ -208,19 +174,22 @@ class _HomeState extends State<Home> {
                                         _checked[i] = value!;
                                       });
                                     },
+                                    activeColor: const Color.fromARGB(255, 255, 255, 255),
+                                    checkColor: const Color.fromARGB(255, 153, 0, 0),
+                                    side: const BorderSide(color: Color.fromARGB(255, 255, 255, 255), width: 2),
                                   ),
                                   Expanded(
                                     child: Text(
                                       _notes[i],
                                       style: TextStyle(
-                                        color: _checked[i] ? Colors.grey : Colors.black,
+                                        color: _checked[i] ? Colors.grey : const Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 16,
                                         decoration: _checked[i] ? TextDecoration.lineThrough : null,
                                       ),
                                     ),
                                   ),
                                   IconButton(
-                                    icon: const Icon(Icons.delete, color: Color.fromARGB(255, 97, 1, 1), size: 30),
+                                    icon: const Icon(Icons.delete, color: Color.fromARGB(255, 255, 255, 255), size: 30),
                                     onPressed: () => _deleteNote(i),
                                   ),
                                 ],
@@ -241,7 +210,7 @@ class _HomeState extends State<Home> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0xFFFFF1E6), // Beige Claro
+                    Color.fromARGB(255, 153, 0, 0), // Beige Claro
                     Color(0xFFE57373), // Rojo Rubor
                   ],
                   begin: Alignment.topCenter,
